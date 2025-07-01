@@ -8,7 +8,9 @@ export async function decideGeminiCliCommand(
   allowNpx: boolean,
 ): Promise<{ command: string; initialArgs: string[] }> {
   return new Promise((resolve, reject) => {
-    const child = spawn("which", ["gemini"]);
+    const isWindows = process.platform === "win32";
+    const whichCmd = isWindows ? "where" : "which";
+    const child = spawn(whichCmd, ["gemini"]);
     child.on("close", (code) => {
       if (code === 0) {
         resolve({ command: "gemini", initialArgs: [] });
