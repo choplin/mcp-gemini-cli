@@ -7,8 +7,8 @@ A simple MCP server wrapper for Google's Gemini CLI that enables AI assistants t
 This server exposes three tools that interact with Gemini CLI:
 
 - `googleSearch`: Asks Gemini to perform a Google search using your query
-- `geminiChat`: Sends prompts directly to Gemini for general conversations
-- `geminiAnalyzeFile`: Analyzes files (images, PDFs, text) using Gemini's multimodal capabilities
+- `chat`: Sends prompts directly to Gemini for general conversations
+- `analyzeFile`: Analyzes files (images, PDFs, text) using Gemini's multimodal capabilities
 
 ## Prerequisites
 
@@ -84,7 +84,7 @@ Performs a Google search using Gemini CLI.
 - `yolo` (optional): Skip confirmations
 - `model` (optional): Gemini model to use (default: "gemini-2.5-pro")
 
-### 2. geminiChat
+### 2. chat
 
 Have a conversation with Gemini.
 
@@ -95,7 +95,7 @@ Have a conversation with Gemini.
 - `yolo` (optional): Skip confirmations
 - `model` (optional): Gemini model to use (default: "gemini-2.5-pro")
 
-### 3. geminiAnalyzeFile
+### 3. analyzeFile
 
 Analyze files using Gemini's multimodal capabilities.
 
@@ -136,36 +136,36 @@ googleSearch({
 });
 ```
 
-### geminiChat
+### chat
 
 ```typescript
 // Simple chat
-geminiChat({ prompt: "Explain quantum computing in simple terms" });
+chat({ prompt: "Explain quantum computing in simple terms" });
 
 // Using a different model
-geminiChat({
+chat({
   prompt: "Write a haiku about programming",
   model: "gemini-2.5-flash",
 });
 ```
 
-### geminiAnalyzeFile
+### analyzeFile
 
 ```typescript
 // Analyze an image
-geminiAnalyzeFile({ 
+analyzeFile({ 
   filePath: "/path/to/image.png",
   prompt: "What objects are in this image?"
 });
 
 // Analyze a PDF
-geminiAnalyzeFile({
+analyzeFile({
   filePath: "/path/to/document.pdf",
   prompt: "Summarize the key points in this document"
 });
 
 // General analysis without specific instructions
-geminiAnalyzeFile({ filePath: "/path/to/file.jpg" });
+analyzeFile({ filePath: "/path/to/file.jpg" });
 ```
 
 ## 📝 Development

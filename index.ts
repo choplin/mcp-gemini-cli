@@ -332,9 +332,9 @@ async function main() {
     },
   );
 
-  // Register geminiChat tool
+  // Register chat tool
   server.registerTool(
-    "geminiChat",
+    "chat",
     {
       description: "Engages in a chat conversation with gemini-cli.",
       inputSchema: {
@@ -368,9 +368,9 @@ async function main() {
     },
   );
 
-  // Register geminiAnalyzeFile tool
+  // Register analyzeFile tool
   server.registerTool(
-    "geminiAnalyzeFile",
+    "analyzeFile",
     {
       description:
         "Analyzes files using gemini-cli. Supported file types: Images (.png, .jpg, .jpeg, .gif, .webp, .svg, .bmp), Text (.txt, .md, .text), Documents (.pdf)",

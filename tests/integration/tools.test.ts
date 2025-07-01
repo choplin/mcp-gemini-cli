@@ -83,7 +83,7 @@ describe("MCP Gemini CLI Integration Tests", () => {
     ); // 30 second timeout
 
     test.if(isGeminiCliAvailable)(
-      "geminiChatTool executes without error",
+      "chatTool executes without error",
       async () => {
         const result = await executeGeminiChat({
           prompt: "Say hello",
