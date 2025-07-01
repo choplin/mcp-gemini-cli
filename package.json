@@ -1,6 +1,6 @@
 {
   "name": "mcp-gemini-cli",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "MCP server wrapper for Google's Gemini CLI",
   "author": "choplin",
   "license": "MIT",
