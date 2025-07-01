@@ -100,6 +100,7 @@ Have a conversation with Gemini.
 Analyze files using Gemini's multimodal capabilities.
 
 **Supported file types:**
+
 - **Images**: PNG, JPG, JPEG, GIF, WEBP, SVG, BMP
 - **Text**: TXT, MD, TEXT
 - **Documents**: PDF

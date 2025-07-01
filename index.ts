@@ -206,33 +206,48 @@ export async function executeGeminiChat(args: unknown, allowNpx = false) {
 }
 
 // Supported file extensions for geminiAnalyzeFile
-const SUPPORTED_IMAGE_EXTENSIONS = ['.png', '.jpg', '.jpeg', '.gif', '.webp', '.svg', '.bmp'];
-const SUPPORTED_TEXT_EXTENSIONS = ['.txt', '.md', '.text'];
-const SUPPORTED_DOCUMENT_EXTENSIONS = ['.pdf'];
-const SUPPORTED_EXTENSIONS = [...SUPPORTED_IMAGE_EXTENSIONS, ...SUPPORTED_TEXT_EXTENSIONS, ...SUPPORTED_DOCUMENT_EXTENSIONS];
+const SUPPORTED_IMAGE_EXTENSIONS = [
+  ".png",
+  ".jpg",
+  ".jpeg",
+  ".gif",
+  ".webp",
+  ".svg",
+  ".bmp",
+];
+const SUPPORTED_TEXT_EXTENSIONS = [".txt", ".md", ".text"];
+const SUPPORTED_DOCUMENT_EXTENSIONS = [".pdf"];
+const SUPPORTED_EXTENSIONS = [
+  ...SUPPORTED_IMAGE_EXTENSIONS,
+  ...SUPPORTED_TEXT_EXTENSIONS,
+  ...SUPPORTED_DOCUMENT_EXTENSIONS,
+];
 
-export async function executeGeminiAnalyzeFile(args: unknown, allowNpx = false) {
+export async function executeGeminiAnalyzeFile(
+  args: unknown,
+  allowNpx = false,
+) {
   const parsedArgs = GeminiAnalyzeFileParametersSchema.parse(args);
-  
+
   // Check if file extension is supported
   const fileExtension = extname(parsedArgs.filePath).toLowerCase();
   if (!SUPPORTED_EXTENSIONS.includes(fileExtension)) {
     throw new Error(
       `Unsupported file type: ${fileExtension}. Supported types are:\n` +
-      `Images: ${SUPPORTED_IMAGE_EXTENSIONS.join(', ')}\n` +
-      `Text: ${SUPPORTED_TEXT_EXTENSIONS.join(', ')}\n` +
-      `Documents: ${SUPPORTED_DOCUMENT_EXTENSIONS.join(', ')}`
+        `Images: ${SUPPORTED_IMAGE_EXTENSIONS.join(", ")}\n` +
+        `Text: ${SUPPORTED_TEXT_EXTENSIONS.join(", ")}\n` +
+        `Documents: ${SUPPORTED_DOCUMENT_EXTENSIONS.join(", ")}`,
     );
   }
-  
+
   const geminiCliCmd = await decideGeminiCliCommand(allowNpx);
-  
+
   // Build the prompt with file path
   let fullPrompt = `Analyze this file: ${parsedArgs.filePath}`;
   if (parsedArgs.prompt) {
     fullPrompt += `\n\n${parsedArgs.prompt}`;
   }
-  
+
   const cliArgs = ["-p", fullPrompt];
   if (parsedArgs.sandbox) {
     cliArgs.push("-s");
@@ -243,7 +258,7 @@ export async function executeGeminiAnalyzeFile(args: unknown, allowNpx = false) 
   if (parsedArgs.model) {
     cliArgs.push("-m", parsedArgs.model);
   }
-  
+
   const result = await executeGeminiCli(geminiCliCmd, cliArgs);
   return result;
 }
@@ -357,9 +372,14 @@ async function main() {
   server.registerTool(
     "geminiAnalyzeFile",
     {
-      description: "Analyzes files using gemini-cli. Supported file types: Images (.png, .jpg, .jpeg, .gif, .webp, .svg, .bmp), Text (.txt, .md, .text), Documents (.pdf)",
+      description:
+        "Analyzes files using gemini-cli. Supported file types: Images (.png, .jpg, .jpeg, .gif, .webp, .svg, .bmp), Text (.txt, .md, .text), Documents (.pdf)",
       inputSchema: {
-        filePath: z.string().describe("The absolute path to the file to analyze. Supported: .png, .jpg, .jpeg, .gif, .webp, .svg, .bmp, .pdf, .txt, .md, .text"),
+        filePath: z
+          .string()
+          .describe(
+            "The absolute path to the file to analyze. Supported: .png, .jpg, .jpeg, .gif, .webp, .svg, .bmp, .pdf, .txt, .md, .text",
+          ),
         prompt: z
           .string()
           .optional()
