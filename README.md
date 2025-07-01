@@ -214,16 +214,19 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## 📋 Changelog
 
-### [1.0.0] - 2025-07-02
+### [0.3.0] - 2025-07-02
 
 #### Breaking Changes
+
 - Tool names: `geminiChat` → `chat`, `geminiAnalyzeFile` → `analyzeFile`
 - Package name: `@choplin/mcp-gemini-cli` → `mcp-gemini-cli`
 
 #### New Features
+
 - `analyzeFile` tool for images (PNG/JPG/GIF/etc), PDFs, and text files
 
 ### [0.2.0] - Previous
+
 - Initial release with `googleSearch` and `geminiChat` tools
 
 ## 🔗 Related Links

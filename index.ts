@@ -282,7 +282,7 @@ async function main() {
 
   const server = new McpServer({
     name: "mcp-gemini-cli",
-    version: "1.0.0",
+    version: "0.3.0",
   });
 
   // Register googleSearch tool
