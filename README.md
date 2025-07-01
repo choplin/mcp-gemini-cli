@@ -19,7 +19,7 @@ This server exposes three tools that interact with Gemini CLI:
 ### 1. Add the MCP server
 
 ```bash
-claude mcp add -s project gemini-cli -- npx @choplin/mcp-gemini-cli --allow-npx
+claude mcp add -s project gemini-cli -- npx mcp-gemini-cli --allow-npx
 ```
 
 Or configure your MCP client with the settings shown in the Installation Options section below.
@@ -41,7 +41,7 @@ Example prompts:
   "mcpServers": {
     "mcp-gemini-cli": {
       "command": "npx",
-      "args": ["@choplin/mcp-gemini-cli", "--allow-npx"]
+      "args": ["mcp-gemini-cli", "--allow-npx"]
     }
   }
 }

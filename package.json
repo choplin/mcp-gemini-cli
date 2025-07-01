@@ -1,5 +1,5 @@
 {
-  "name": "@choplin/mcp-gemini-cli",
+  "name": "mcp-gemini-cli",
   "version": "0.2.0",
   "description": "MCP server wrapper for Google's Gemini CLI",
   "author": "choplin",
